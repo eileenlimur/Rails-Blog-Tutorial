@@ -1,15 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-      </tr>
-    <% end %>
+<% @posts.each do |post| %>
+  <h1><%= link_to post.title, post %></h1>
+<% end %>
 
 <br>
+
 <% if user_signed_in? %>
   <%= link_to 'New Post', new_post_path %>
+<% else %>
+  <%= link_to 'Admin Login', new_user_session_path%>
 <% end %>
