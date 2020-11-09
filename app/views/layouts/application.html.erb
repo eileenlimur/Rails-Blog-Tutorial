@@ -4,12 +4,22 @@
     <title>RailsBlog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
-  <body>
+  <nav class='navbar navbar-inverse'>
+    <%= link_to 'My Blog', root_path, class: 'navbar-brand'%>
+    <div class='container'>
+      <p class='navbar-text navbar-right'>
+      <% if user_signed_in? %>
+        <%= link_to 'New Post', new_post_path %>
+      <% else %>
+        <%= link_to 'Admin Login', new_user_session_path%>
+      <% end %>
+      </p>
+    </div>
+  </nav>
+  <div class='col-md-10 col-md-offset-1'>
     <%= yield %>
-  </body>
+  </div>
 </html>
